@@ -2,17 +2,20 @@
   "name": "ledger-co",
   "version": "1.0.0",
   "description": "Node app for ledger co",
-  "main": "geektrust.js",
+  "main": "geektrust.ts",
   "dependencies": {
-    "express": "^4.17.3",
     "nodemon": "^2.0.15"
   },
   "engines": {
     "node": "14.15.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
   "scripts": {
-    "start": "nodemon geektrust.js",
+    "start": "npx nodemon geektrust.ts",
     "test": "mocha"
   },
   "author": "Rowan R",
