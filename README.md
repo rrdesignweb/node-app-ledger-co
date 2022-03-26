@@ -2,7 +2,7 @@
 
 ### Description
 
-Small node app to calculate EMI, reading values from a txt file
+Small node/ts app to calculate EMI, reading values from a txt file
 
 ### Node Version `14.15.4`
 
@@ -10,6 +10,7 @@ Small node app to calculate EMI, reading values from a txt file
 
 - `npm install`
 - `npm start`
+- `npm test`
 
 ### Reference 
 

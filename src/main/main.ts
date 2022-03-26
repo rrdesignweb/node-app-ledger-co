@@ -9,6 +9,7 @@ const { PaymentModel } = require("../models/payment");
 
 //Funcs
 const { getLoanBalance } = require("../functions/index")
+const { COMMANDS } = require("../functions/constants")
 
 //Input
 const inputTxtPath1 = "./../../sample-input/input1.txt";
@@ -16,26 +17,34 @@ const inputTxtPath2 = "./../../sample-input/input2.txt";
 const inputTxtFile1 = fs.createReadStream(path.resolve(__dirname, inputTxtPath1));
 const inputTxtFile2 = fs.createReadStream(path.resolve(__dirname, inputTxtPath2));
 
-const COMMANDS = {
-  LOAN: "LOAN",
-  PAYMENT: "PAYMENT",
-  BALANCE: "BALANCE",
-};
-
 let LOAN_INPUT_ARRAY: any[] = [];
 let PAYMENT_INPUT_ARRAY: any[] = [];
-//let BALANCE_INPUT_ARRAY: any[] = [];
 
 const userPrompt = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-}).question("Press enter to continue... ", function () {
+}).question("Enter sample txt file choice - 1 or 2 to continue... ", function (action: string) {
 
-  const rl = readline.createInterface({
-    input: inputTxtFile1, 
-    output: process.stdout,
-    terminal: false,
-  });
+  if (action != '1' && action != '2') {
+    console.log("Wrong input!", action, typeof action);
+    console.log("\nKey in 'rs' and hit enter to start again");
+    process.exit(0);
+  }
+
+  let rl: any;
+  if (action == "1") {
+    rl = readline.createInterface({
+      input: inputTxtFile1,
+      output: process.stdout,
+      terminal: false,
+    });
+  } else if (action == "2") {
+    rl = readline.createInterface({
+      input: inputTxtFile2,
+      output: process.stdout,
+      terminal: false,
+    });
+  }
 
   rl.on("line", function (line: any) {
     let field: any = line.split(" ");
@@ -70,3 +79,5 @@ const userPrompt = readline.createInterface({
     process.exit(0);
   });
 });
+
+export { };
